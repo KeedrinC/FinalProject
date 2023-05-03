@@ -5,7 +5,7 @@
  */
 
 public class BartSimpsonUnit extends Recruiter {
-	final int MAX_NUM_SPAWNED = 1;
+	final int MAX_NUM_SPAWNED = 2;
 	private int numTimesSpawned;
 	private boolean distract;
 	private boolean recruit;

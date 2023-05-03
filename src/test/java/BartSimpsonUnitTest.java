@@ -45,7 +45,7 @@ class BartSimpsonUnitTest {
         BartSimpsonUnit canSpawn = new BartSimpsonUnit('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
 			5, 5, 1, 0, 0, true, true);
         BartSimpsonUnit cannotSpawn = new BartSimpsonUnit('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
-			5, 5, 1, 0, 1, true, true);
+			5, 5, 1, 0, 2, true, true);
         assertTrue(canSpawn.canSpawn());
         assertFalse(cannotSpawn.canSpawn());
     }
