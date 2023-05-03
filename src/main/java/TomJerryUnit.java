@@ -20,39 +20,18 @@ public class TomJerryUnit extends Attacker {
 	}
 
 	public TomJerryUnit() {
-		this(
-			'T',
-			"Tom & Jerry",
-			100.0,
-			0.0,
-			25.0,
-			0.0,
-			0,
-			5,
-			5,
-			1,
-			0,
-			true,
-			true,
-			false
-		);
+		this('T', "Tom & Jerry", 100.0, 0.0, 25.0, 0.0, 0,
+			5, 5, 1, 0, true, true, false);
 	}
 
-	public TomJerryUnit spawn() {
-		return new TomJerryUnit();
-	}
 	public boolean canSpawn() {
 		return true;
 	}
-	public boolean canHomingRocket() {
-		return this.homingRocket;
-	}
-	public boolean canOfferCheese() {
-		return this.offerCheese;
-	}
-	public boolean isHiding() {
-		return this.hiding;
-	}
+
+	public TomJerryUnit spawn() { return new TomJerryUnit(); }
+	public boolean canHomingRocket() { return this.homingRocket; }
+	public boolean canOfferCheese() { return this.offerCheese; }
+	public boolean isHiding() { return this.hiding; }
 	public void setHomingRocket(boolean homingRocket) {
 		this.homingRocket = homingRocket;
 	}
@@ -82,7 +61,6 @@ public class TomJerryUnit extends Attacker {
 	 * @param damage the amount of damage that will be taken
 	 */
 	public void takeDamage(double damage) {
-		if (!this.isHiding())
-			this.setHealth(this.health - damage);
+		if (!this.isHiding()) this.setHealth(this.health - damage);
 	}
 }
