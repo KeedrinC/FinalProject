@@ -40,6 +40,7 @@ abstract class Unit {
     }
 
     abstract Unit spawn();
+    abstract boolean canSpawn();
     String getTeamColor() {
         return this.teamColor;
     }
