@@ -16,8 +16,9 @@ public class Team {
         return this.color;
     }
     ArrayList<Unit> getTeamUnits() {
-        if (this.members != null) return this.members;
-        return new ArrayList<Unit>(0);
+        return this.members;
+        // if (this.members != null) return this.members;
+        // return new ArrayList<Unit>(0);
     }
     void removeUnitsFromTeam(Unit subtracted) {
         this.members.remove(subtracted);
