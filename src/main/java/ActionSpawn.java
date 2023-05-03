@@ -1,4 +1,3 @@
-
 class ActionSpawn extends Action {
     ActionSpawn(Game game, int row, int column, int targetRow, int targetColumn)
         {super(game, row, column, targetRow, targetColumn);}

@@ -1,4 +1,3 @@
-
 class ActionMove extends Action {
     ActionMove(Game game, int row, int column, int targetRow, int targetColumn)
         {super(game, row, column, targetRow, targetColumn);}
