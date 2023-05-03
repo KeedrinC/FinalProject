@@ -12,8 +12,7 @@ public abstract class Recruiter extends Unit {
     public void setNumRecruits(int numRecruits) {
         this.numRecruits = numRecruits;
     }
-    public boolean validRecruitPath(
-        int isRecruitingRow, int isRecruitingColumn, int beingRecruitedRow, int beingRecruitedColumn) {
+    public boolean validRecruitPath(int row, int column, int targetRow, int targetColumn) {
         return true;
     }
 }

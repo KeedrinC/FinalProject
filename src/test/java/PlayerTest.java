@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 class PlayerTest {
-
     @Test
     void ThreeParamPlayer() {
         Team team = new Team("Blue", null);
@@ -15,7 +14,6 @@ class PlayerTest {
         assertEquals(threeParam.getTeam().getTeamColor(), "Blue");
         assertEquals(threeParam.getTeam().getTeamUnits(), null);
     }
-
     @Test
     void TwoParamPlayer() {
         Team team = new Team("Black", null);
@@ -26,17 +24,14 @@ class PlayerTest {
         assertEquals(twoParam.getTeam().getTeamColor(), "Black");
         assertEquals(twoParam.getTeam().getTeamUnits(), null);
     }
-
     @Test
     void ZeroParamPlayer() {
-        Team team = new Team("Red", null);
         Player zeroParam = new Player();
         assert(zeroParam.isTurn());
         assertEquals(zeroParam.getPlayerNumber(), 1);
         assertEquals(zeroParam.getTeam().getTeamColor(), "Red");
         assertEquals(zeroParam.getTeam().getTeamUnits(), null);
     }
-
     @Test
     void getPlayerNumber() {
         Player playerOne = new Player(1, null);
@@ -44,7 +39,6 @@ class PlayerTest {
         assertEquals(playerOne.getPlayerNumber(), 1);
         assertEquals(playerTwo.getPlayerNumber(), 2);
     }
-
     @Test
     void setPlayerNumber() {
         Player player = new Player(1, null);
@@ -52,7 +46,6 @@ class PlayerTest {
         player.setPlayerNumber(2);
         assertEquals(player.getPlayerNumber(), 2);
     }
-
     @Test
     void isTurn() {
         Player playerOne = new Player(1, null);
@@ -62,7 +55,6 @@ class PlayerTest {
         assertEquals(playerOne.isTurn(), true);
         assertEquals(playerTwo.isTurn(), false);
     }
-
     @Test
     void setTurn() {
         Player playerOne = new Player();
@@ -71,7 +63,6 @@ class PlayerTest {
         playerOne.setTurn(false);
         assertEquals(playerOne.isTurn(), false);
     }
-
     @Test
     void getTeam() {
         ArrayList<Unit> players = new ArrayList<Unit>();
@@ -86,7 +77,6 @@ class PlayerTest {
         assertEquals(player.getTeam().getTeamColor(), "Black");
         assertEquals(player.getTeam().getTeamUnits(), players);
     }
-
     @Test
     void setPlayersTeam() {
         ArrayList<Unit> players = new ArrayList<Unit>();
