@@ -41,6 +41,9 @@ public class TomJerryUnit extends Attacker {
 	public TomJerryUnit spawn() {
 		return new TomJerryUnit();
 	}
+	public boolean canSpawn() {
+		return true;
+	}
 	public boolean canHomingRocket() {
 		return this.homingRocket;
 	}
