@@ -4,8 +4,8 @@ class ActionRecruit extends Action {
     void perfomAction() {
         BoardSquare[][] squares = super.game.getBoardSquares();
         BoardSquare target = squares[super.targetRow][super.targetColumn];
-        game.getOpponentPlayer().getTeam().members.remove(target.getUnit()); // ● remove the Unit that was recruited from the opponent’s team
-        game.getCurrentPlayer().getTeam().members.add(target.getUnit()); // ● add the Unit that was recruited to the current team
+        game.getOpponentPlayer().getTeam().removeUnitsFromTeam(target.getUnit()); // ● remove the Unit that was recruited from the opponent’s team
+        game.getCurrentPlayer().getTeam().addUnitsToTeam(target.getUnit()); // ● add the Unit that was recruited to the current team
         super.game.changeTurn(); // ● change the turn
     }
 }

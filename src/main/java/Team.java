@@ -10,6 +10,8 @@ public class Team {
     ArrayList<Unit> members;
     Team(String color, ArrayList<Unit> members) {
         this.color = color;
+        if (members != null)
+            for (Unit m : members) m.setTeamColor(this.color);
         this.members = members;
     }
     String getTeamColor() {
