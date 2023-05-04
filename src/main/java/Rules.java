@@ -7,7 +7,7 @@ public class Rules {
         Unit currentUnit = current.getUnit();
         Unit targetUnit = target.getUnit();
         Boolean isOpponent = targetUnit != null && targetUnit.getTeamColor() != currentUnit.getTeamColor();
-        if (currentUnit.getTeamColor() != game.getCurrentPlayer().getTeam().getTeamColor()) return false;
+        if (currentUnit == null || currentUnit.getTeamColor() != game.getCurrentPlayer().getTeam().getTeamColor()) return false;
         return (actionType == 'M' && target.isEmpty && currentUnit.validMovePath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'S' && target.isEmpty && currentUnit.validSpawnPath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'R' && currentUnit instanceof Recruiter && isOpponent
