@@ -6,8 +6,6 @@ import java.util.Arrays;
 
 public class ActionTest {
     protected Game game;
-    protected int row, column;
-    protected int targetRow, targetColumn;
     ActionTest() {
         Player one = new Player(1, new Team("red", new ArrayList<Unit>(Arrays.asList(new BartSimpsonUnit(), new TomJerryUnit()))));
         Player two = new Player(2, new Team("blue", new ArrayList<Unit>(Arrays.asList(new TomJerryUnit()))));
@@ -19,7 +17,8 @@ public class ActionTest {
     @Test
     void actionMove() {
         int[] pos = {0, 0}, target = {1, 0}; // move down
-        ActionMove m = new ActionMove(this.game, pos[0], pos[1], target[0], target[1]);
+        ActionMove m = new ActionMove(game, pos[0], pos[1], target[0], target[1]);
+
         assert(!game.getBoardSquares()[pos[0]][pos[1]].isEmpty());      // current position isn't empty
         assert(game.getBoardSquares()[target[0]][target[1]].isEmpty()); // target position is empty
         m.perfomAction();
@@ -29,24 +28,27 @@ public class ActionTest {
     @Test
     void actionAttackBS() { // TomJerryUnit attacks BartSimpsonUnit
         int[] pos = {1, 1}, target = {0, 0}; // attack diagonally
-        ActionAttack m = new ActionAttack(this.game, pos[0], pos[1], target[0], target[1]);
+        ActionAttack m = new ActionAttack(game, pos[0], pos[1], target[0], target[1]);
         Unit attacker = game.getBoardSquares()[pos[0]][pos[1]].getUnit();
         Unit victim = game.getBoardSquares()[target[0]][target[1]].getUnit();
-        assert(victim.health > 0);
+
         assert(!game.getBoardSquares()[pos[0]][pos[1]].isEmpty());      // current position isn't empty
         assert(!game.getBoardSquares()[target[0]][target[1]].isEmpty()); // target position isn't empty
         m.perfomAction();
         assert(game.getBoardSquares()[pos[0]][pos[1]].isEmpty());       // current position is empty
         assert(!game.getBoardSquares()[target[0]][target[1]].isEmpty());// target position isn't empty
         assertEquals(game.getBoardSquares()[target[0]][target[1]].getUnit(), attacker); // attacker moved to target
+        assertFalse(game.getCurrentPlayer().getTeam().getTeamUnits().contains(victim));
+        assertFalse(game.getOpponentPlayer().getTeam().getTeamUnits().contains(victim));
     }
     @Test
     void actionAttackTJ() { // TomJerryUnit attacks TomJerryUnit
         int[] pos = {1, 1}, target = {0, 1}; // attack upwards
-        ActionAttack m = new ActionAttack(this.game, pos[0], pos[1], target[0], target[1]);
+        ActionAttack m = new ActionAttack(game, pos[0], pos[1], target[0], target[1]);
         Unit attacker = game.getBoardSquares()[pos[0]][pos[1]].getUnit();
         Unit victim = game.getBoardSquares()[target[0]][target[1]].getUnit();
         double victimHealth = victim.getHealth();
+
         assert(!game.getBoardSquares()[pos[0]][pos[1]].isEmpty());      // current position isn't empty
         assert(!game.getBoardSquares()[target[0]][target[1]].isEmpty()); // target position isn't empty
         m.perfomAction();
@@ -61,7 +63,7 @@ public class ActionTest {
         int[] pos = {0, 0}, target = {1, 1}; // recruit diagonally
         BoardSquare posSquare = game.getBoardSquares()[pos[0]][pos[1]];
         BoardSquare targetSquare = game.getBoardSquares()[target[0]][target[1]];
-        ActionRecruit m = new ActionRecruit(this.game, pos[0], pos[1], target[0], target[1]);
+        ActionRecruit m = new ActionRecruit(game, pos[0], pos[1], target[0], target[1]);
         assert(!posSquare.isEmpty());      // current position isn't empty
         assert(!targetSquare.isEmpty()); // target position isn't empty
         assert(posSquare.getUnit().getTeamColor() != targetSquare.getUnit().getTeamColor()); // not already teammates
