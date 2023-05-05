@@ -48,7 +48,7 @@ public class TextView {
 			validated = Character.isDigit(validInt)
                 && Character.getNumericValue(validInt) <= max
                 && Character.getNumericValue(validInt) >= min;
-			if (!validated) System.out.print("Error: Invalid Int. Try again: ");
+			if (!validated) System.out.println("Error: Invalid Int. Try again: ");
 		} while(!validated);
 		System.out.println(validInt);
 		return Character.getNumericValue(validInt);
@@ -61,13 +61,13 @@ public class TextView {
         int numRows = game.getBoard().getNumRows();
         int numCols = game.getBoard().getNumColumns();
         System.out.println("Enter row for 'fromSquare': 0 - " + (numRows - 1));
-        row = getValidInt(0, numRows, input);
+        row = getValidInt(0, numRows - 1, input);
         System.out.println("Enter column for 'fromSquare': 0 - " + (numCols - 1));
-        column = getValidInt(0, numRows, input);
+        column = getValidInt(0, numRows - 1, input);
         System.out.println("Enter row for 'toSquare': 0 - " + (numRows - 1));
-        targetRow = getValidInt(0, numRows, input);
+        targetRow = getValidInt(0, numRows - 1, input);
         System.out.println("Enter column for 'toSquare': 0 - " + (numCols - 1));
-        targetColumn = getValidInt(0, numRows, input);
+        targetColumn = getValidInt(0, numRows - 1, input);
     }
 
     public void updateView(Game game) {
