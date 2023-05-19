@@ -69,10 +69,4 @@ abstract class Unit {
     public String toString() {
         return this.teamColor + " " + this.symbol;
     }
-    public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
-        return true;
-    }
-    public boolean validSpawnPath(int row, int column, int targetRow, int targetColumn) {
-        return true;
-    }
 }
