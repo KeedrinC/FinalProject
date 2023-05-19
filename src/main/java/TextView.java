@@ -23,34 +23,31 @@ public class TextView {
         return command;
     }
 
-	public static int getValidInt(int min, int max, Scanner input) {
-		boolean validated = false; char validInt = 'X';
-		System.out.print("Enter Input: ");
-		do {
-			validInt = input.next().charAt(0);
-			validated = Character.isDigit(validInt)
+    public static int getValidInt(int min, int max, Scanner input, String message) {
+        boolean validated = false; char validInt = 'X'; boolean hasNext = false;
+        if (message != null) System.out.print(message + ": ");
+        else System.out.print("Enter Input: ");
+        while (!validated) {
+            hasNext = input.hasNext();
+            validInt = input.next().charAt(0);
+            if (hasNext) System.out.print(validInt + "\n");
+            validated = Character.isDigit(validInt)
                 && Character.getNumericValue(validInt) <= max
                 && Character.getNumericValue(validInt) >= min;
-			if (!validated) System.out.println("Error: Invalid Int. Try again: ");
-		} while(!validated);
-		System.out.println(validInt);
-		return Character.getNumericValue(validInt);
-	}
-
+            if (!validated) System.out.print("Error: " + validInt + " is not valid ("+ min + " - " + max + "). Try again: ");
+        }
+        return Character.getNumericValue(validInt);
+    }
 
     public void getNextPlayersAction(Game game) {
         Scanner input = new Scanner(System.in);
         this.actionType = getUsersNextActionType(input);
-        int numRows = game.getBoard().getNumRows();
-        int numCols = game.getBoard().getNumColumns();
-        System.out.println("Enter row for 'fromSquare': 0 - " + (numRows - 1));
-        row = getValidInt(0, numRows - 1, input);
-        System.out.println("Enter column for 'fromSquare': 0 - " + (numCols - 1));
-        column = getValidInt(0, numRows - 1, input);
-        System.out.println("Enter row for 'toSquare': 0 - " + (numRows - 1));
-        targetRow = getValidInt(0, numRows - 1, input);
-        System.out.println("Enter column for 'toSquare': 0 - " + (numCols - 1));
-        targetColumn = getValidInt(0, numRows - 1, input);
+        int numRows = game.getBoard().getNumRows() - 1;
+        int numCols = game.getBoard().getNumColumns() - 1;
+        row = getValidInt(0, numRows, input, "Enter row for 'fromSquare': 0 - " + numRows);
+        column = getValidInt(0, numRows, input, "Enter column for 'fromSquare': 0 - " + numCols);
+        targetRow = getValidInt(0, numRows, input, "Enter row for 'toSquare': 0 - " + numRows);
+        targetColumn = getValidInt(0, numRows, input, "Enter column for 'toSquare': 0 - " + numCols);
     }
 
     public void updateView(Game game) {
