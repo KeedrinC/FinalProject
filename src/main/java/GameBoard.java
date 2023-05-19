@@ -3,37 +3,17 @@
  */
 
 class GameBoard {
-    int numRows;
-    int numColumns;
-    BoardSquare[][] squares;
-    GameBoard(int numRows, int numColumns) {
+    private int numRows;
+    private int numColumns;
+    public BoardSquare[][] squares;
+    public GameBoard(int numRows, int numColumns) {
         this.numRows = numRows;
         this.numColumns = numColumns;
         this.setUpEmptyBoard();
     }
-    int getNumRows() {
-        return numRows;
-    }
-    int getNumColumns() {
-        return numColumns;
-    }
-
-    BoardSquare[][] getSquares() {
-        return squares;
-    }
-
-    /**
-	 * Determines if a given row index and column index are inside the bounds of
-     * 0 (inclusive) - numRows (exclusive) and 0 (inclusive) - numColumns (exclusive)
-     * 
-     * @param rowIndex row to check
-     * @param columnIndex column to check 
-     * @returns boolean if in bounds
-	 */
-    boolean inBounds(int rowIndex, int columnIndex) {
-        return (0 <= rowIndex && rowIndex < this.numRows)
-            && (0 <= columnIndex && columnIndex < this.numColumns);
-    }
+    public int getNumRows() { return numRows; }
+    public int getNumColumns() { return numColumns; }
+    public BoardSquare[][] getSquares() { return squares; }
 
     /**
 	 * Creates an empty board using a 2D array of numRows x numColumns
@@ -46,11 +26,24 @@ class GameBoard {
     }
 
     /**
+	 * Determines if a given row index and column index are inside the bounds of
+     * 0 (inclusive) - numRows (exclusive) and 0 (inclusive) - numColumns (exclusive)
+     * 
+     * @param rowIndex row to check
+     * @param columnIndex column to check 
+     * @returns boolean if in bounds
+	 */
+    public boolean inBounds(int rowIndex, int columnIndex) {
+        return (0 <= rowIndex && rowIndex < this.numRows)
+            && (0 <= columnIndex && columnIndex < this.numColumns);
+    }
+
+    /**
 	 * Loops and randomly selects a tile in the 2D grid, the loop breaks when the tile is empty
      * 
      * @returns an random empty space on the board
 	 */
-    BoardSquare findRandomEmptySpace() {
+    public BoardSquare findRandomEmptySpace() {
         BoardSquare space = null;
         do {
             int randomRow = (int)(Math.random() * (double)this.numRows);
@@ -64,15 +57,13 @@ class GameBoard {
     public String toString() {
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
-        for(int col = 0; col < squares[0].length; col++) {
+        for (int col = 0; col < squares[0].length; col++)
             boardString.append(col + "        ");
-        }
         boardString.append("\n");
         for (int row = 0; row < squares.length; row++) {
             boardString.append("Row : " + row + "   ");
-            for (int col = 0; col < squares[row].length; col++) {
+            for (int col = 0; col < squares[row].length; col++)
                 boardString.append(squares[row][col].toString() + "  ");
-            }
             boardString.append("\n");
         }
         return boardString.toString();

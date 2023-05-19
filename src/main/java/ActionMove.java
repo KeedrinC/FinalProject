@@ -1,7 +1,7 @@
 class ActionMove extends Action {
-    ActionMove(Game game, int row, int column, int targetRow, int targetColumn)
+    public ActionMove(Game game, int row, int column, int targetRow, int targetColumn)
         {super(game, row, column, targetRow, targetColumn);}
-    void perfomAction() {
+    public void perfomAction() {
         BoardSquare[][] squares = super.game.getBoardSquares();
         BoardSquare square = squares[super.row][super.column];
         BoardSquare target = squares[super.targetRow][super.targetColumn];

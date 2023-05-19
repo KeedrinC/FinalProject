@@ -1,7 +1,7 @@
 class ActionRecruit extends Action {
-    ActionRecruit(Game game, int row, int column, int targetRow, int targetColumn)
+    public ActionRecruit(Game game, int row, int column, int targetRow, int targetColumn)
         {super(game, row, column, targetRow, targetColumn);}
-    void perfomAction() {
+    public void perfomAction() {
         BoardSquare[][] squares = super.game.getBoardSquares();
         BoardSquare target = squares[super.targetRow][super.targetColumn];
         game.getOpponentPlayer().getTeam().removeUnitsFromTeam(target.getUnit()); // ● remove the Unit that was recruited from the opponent’s team

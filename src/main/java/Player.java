@@ -13,7 +13,7 @@ public class Player {
 	 * @param turn If it's the player's current turn.
 	 * @param team The team/character the player is playing with.
 	 */
-	Player(int playerNumber, boolean turn, Team team) {
+	public Player(int playerNumber, boolean turn, Team team) {
 		this.playerNumber = playerNumber;
 		this.turn = turn;
 		this.team = team;
@@ -25,7 +25,7 @@ public class Player {
 	 * @param playerNumber The player's number.
 	 * @param team The team/character the player is playing with.
 	 */
-	Player(int playerNumber, Team team) {
+	public Player(int playerNumber, Team team) {
 		this.playerNumber = playerNumber;
 		this.turn = false;
 		this.team = team;
@@ -37,7 +37,7 @@ public class Player {
 	 * The player number defaults to 1, if it's their current turn defaults to false,
 	 * and the team defaults to Team.
 	 */
-	Player() {
+	public Player() {
 		this.playerNumber = 1;
 		this.turn = true;
 		this.team = new Team("Red", null);

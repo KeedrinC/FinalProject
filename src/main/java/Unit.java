@@ -16,9 +16,8 @@ abstract class Unit {
     protected int yCor;
     protected int movement;
     protected int movementModifier;
-    Unit(char symbol, String name, double health, double healthModifier,
-        double damage, double damageModifier, int luck, int xCor, int yCor,
-        int movement, int movementModifier) {
+    protected Unit(char symbol, String name, double health, double healthModifier, double damage,
+        double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier) {
         this.symbol = symbol;
         this.name = name;
         this.health = health;
@@ -31,17 +30,15 @@ abstract class Unit {
         this.movement = movement;
         this.movementModifier = movementModifier;
     }
-    Unit(char symbol, String name, double health, double healthModifier,
-        double damage, double damageModifier, int luck, int xCor, int yCor,
-        int movement, int movementModifier, String teamColor) {
+
+    protected Unit(char symbol, String name, double health, double healthModifier, double damage,
+        double damageModifier, int luck, int xCor, int yCor, int movement, int movementModifier, String teamColor) {
         this(symbol, name, health, healthModifier, damage, damageModifier, luck,
             xCor, yCor, movement, movementModifier);
         this.teamColor = teamColor;
     }
 
-    abstract Unit spawn();
-    abstract boolean canSpawn();
-    String getTeamColor() { return this.teamColor;}
+    protected String getTeamColor() { return this.teamColor;}
     protected char getSymbol() { return this.symbol; }
     protected String getName() { return this.name; }
     protected double getHealth() { return this.health; }
@@ -65,6 +62,10 @@ abstract class Unit {
     protected void setyCor(int yCor) { this.yCor = yCor; }
     protected void setMovement(int movement) { this.movement = movement; }
     protected void setMovementModifier(int movementModifier) { this.movementModifier = movementModifier; }
+    abstract Unit spawn();
+    abstract boolean canSpawn();
+    abstract boolean validMovePath(int row, int column, int targetRow, int targetColumn);
+    abstract boolean validSpawnPath(int row, int column, int targetRow, int targetColumn);
     public String toString() {
         return this.teamColor + " " + this.symbol;
     }

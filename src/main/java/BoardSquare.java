@@ -5,22 +5,21 @@
  */
 
 class BoardSquare {
-    boolean isEmpty = true;
-    Unit unit;
-    String color;
-
-    BoardSquare(String color) {
+    private boolean isEmpty = true;
+    private Unit unit;
+    private String color;
+    public BoardSquare(String color) {
         this.color = color;
     }
 
-    Unit getUnit() { return this.unit; }
-    boolean isEmpty() { return this.isEmpty; }
-    String getSquareColor() { return this.color; }
-    void setUnit(Unit replacement) {
+    public Unit getUnit() { return this.unit; }
+    public boolean isEmpty() { return this.isEmpty; }
+    public String getSquareColor() { return this.color; }
+    public void setUnit(Unit replacement) {
         this.unit = replacement;
         this.isEmpty = false;
     }
-    Unit removeUnit() {
+    public Unit removeUnit() {
         Unit removed = this.unit;
         this.unit = null;
         this.isEmpty = true;

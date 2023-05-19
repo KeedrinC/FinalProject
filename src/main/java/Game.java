@@ -6,10 +6,10 @@ import java.util.Collections;
  */
 
 public class Game {
-    GameBoard board;
-    Player playerOne;
-    Player playerTwo;
-    Game(int numRows, int numColumns, Player p1, Player p2) {
+    private GameBoard board;
+    private Player playerOne;
+    private Player playerTwo;
+    public Game(int numRows, int numColumns, Player p1, Player p2) {
         p1.setTurn(true);
         p2.setTurn(false);
         this.playerOne = p1;
@@ -21,15 +21,15 @@ public class Game {
         this.board = new GameBoard(numRows, numColumns);
     }
 
-    GameBoard getBoard() {
+    public GameBoard getBoard() {
         return this.board;
     }
 
-    Player getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return this.isTurn(playerOne) ? this.playerOne : this.playerTwo;
     }
 
-    Player getOpponentPlayer() {
+    public Player getOpponentPlayer() {
         return this.isTurn(playerOne) ? this.playerTwo : this.playerOne;
     }
 
@@ -39,11 +39,11 @@ public class Game {
 	 * @param player the player who's turn to check
      * @returns if it's player's turn
 	 */
-    boolean isTurn(Player player) {
+    public boolean isTurn(Player player) {
         return player.isTurn();
     }
 
-    BoardSquare[][] getBoardSquares() {
+    public BoardSquare[][] getBoardSquares() {
         return this.getBoard().getSquares();
     }
 
@@ -51,7 +51,7 @@ public class Game {
 	 * Switches each player's turn. Switch P1's turn from previous state
      * and set P2 of the opposite of that, because P2 is always the opposite of P1.
 	 */
-    void changeTurn() {
+    public void changeTurn() {
         this.playerOne.setTurn(!this.playerOne.isTurn());
         this.playerTwo.setTurn(!this.playerOne.isTurn());
     }

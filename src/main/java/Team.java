@@ -6,25 +6,25 @@ import java.util.ArrayList;
  */
 
 public class Team {
-    String color;
-    ArrayList<Unit> members;
-    Team(String color, ArrayList<Unit> members) {
+    private String color;
+    private ArrayList<Unit> members;
+    public Team(String color, ArrayList<Unit> members) {
         this.color = color;
         if (members != null)
             for (Unit m : members) m.setTeamColor(this.color);
         this.members = members;
     }
-    String getTeamColor() {
+    public String getTeamColor() {
         return this.color;
     }
-    ArrayList<Unit> getTeamUnits() {
+    public ArrayList<Unit> getTeamUnits() {
         return this.members;
     }
-    void removeUnitsFromTeam(Unit subtracted) {
+    public void removeUnitsFromTeam(Unit subtracted) {
         subtracted.setTeamColor(null);
         this.members.remove(subtracted);
     }
-    void addUnitsToTeam(Unit addition) {
+    public void addUnitsToTeam(Unit addition) {
         addition.setTeamColor(this.color);
         this.members.add(addition);
     }

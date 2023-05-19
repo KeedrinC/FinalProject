@@ -8,7 +8,6 @@ public class TomJerryUnit extends Attacker {
 	private boolean homingRocket;
 	private boolean offerCheese;
 	private boolean hiding;
-
 	public TomJerryUnit(char symbol, String name, double health, double healthModifier,
 		double damage, double damageModifier, int luck, int xCor, int yCor, int movement,
 		int movementModifier, boolean homingRocket, boolean offerCheese, boolean hiding) {
@@ -24,24 +23,15 @@ public class TomJerryUnit extends Attacker {
 			5, 5, 1, 0, true, true, false);
 	}
 
-	public boolean canSpawn() {
-		return true;
-	}
-
 	public TomJerryUnit spawn() { return new TomJerryUnit(); }
+	public boolean canSpawn() { return true; }
 	public boolean canHomingRocket() { return this.homingRocket; }
 	public boolean canOfferCheese() { return this.offerCheese; }
 	public boolean isHiding() { return this.hiding; }
-	public void setHomingRocket(boolean homingRocket) {
-		this.homingRocket = homingRocket;
-	}
-	public void setOfferCheese(boolean offerCheese) {
-		this.offerCheese = offerCheese;
-	}
-	public void setHiding(boolean hiding) {
-		this.hiding = hiding;
-	}
-	
+	public void setHomingRocket(boolean homingRocket) { this.homingRocket = homingRocket; }
+	public void setOfferCheese(boolean offerCheese) { this.offerCheese = offerCheese; }
+	public void setHiding(boolean hiding) { this.hiding = hiding; }
+
 	/**
 	 * Calculates damage that will be dealt by the piece
 	 *
