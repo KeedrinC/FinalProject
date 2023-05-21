@@ -55,6 +55,8 @@ public class TextView {
     }
 
     public void printEndOfGameMessage(Game game) {
-        System.out.println("Game over. Player #" + game.getWinner().getPlayerNumber() + " has won!");
+        Player winner = game.getWinner();
+        if (winner != null) System.out.println("Game over! Player " + winner.getPlayerNumber() + " has won!");
+        else System.out.println("Game over! It's a tie!");
     }
 }

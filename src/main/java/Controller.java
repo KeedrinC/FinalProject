@@ -68,9 +68,8 @@ public class Controller {
             textView.updateView(game); // Print the game board
 
             if (game.isGameEnded()) {
-                Player winner = game.getWinner();
-                if (winner != null) System.out.println("Game over! Player " + winner.getPlayerNumber() + " has won!");
-                else System.out.println("Game over! It's a tie!");
+                System.out.print("Winning Move: " + this.gameEvents.pop().getEventDetails());
+                this.textView.printEndOfGameMessage(this.game);
             }
         }
     }
