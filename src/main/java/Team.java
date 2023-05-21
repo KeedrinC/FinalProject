@@ -14,12 +14,8 @@ public class Team {
             for (Unit m : members) m.setTeamColor(this.color);
         this.members = members;
     }
-    public String getTeamColor() {
-        return this.color;
-    }
-    public ArrayList<Unit> getTeamUnits() {
-        return this.members;
-    }
+    public String getTeamColor() { return this.color; }
+    public ArrayList<Unit> getTeamUnits() { return this.members; }
     public void removeUnitsFromTeam(Unit subtracted) {
         subtracted.setTeamColor(null);
         this.members.remove(subtracted);

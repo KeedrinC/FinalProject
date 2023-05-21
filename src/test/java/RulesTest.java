@@ -24,18 +24,18 @@ public class RulesTest {
     @Test
     void checkAttackAction() { // TomJerryUnit attacks BartSimpsonUnit
         int[] pos = {0, 1}, target = {1, 1}; // attack downward
-        assert(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'A'));
+        assertTrue(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'A'));
         // fail if not the current player's turn
         assertFalse(Rules.checkValidAction(game, target[0], target[1], pos[0], pos[1], 'A'));
     }
     @Test
     void checkRecruitAction() { // TomJerryUnit attacks BartSimpsonUnit
         int[] pos = {0, 0}, target = {1, 1}; // recruit diagonally
-        assert(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'R'));
+        assertTrue(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'R'));
     }
     @Test
     void checkSpawnAction() {
         int[] pos = {0, 0}, target = {1, 1}; // recruit diagonally
-        assert(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'R'));
+        assertTrue(Rules.checkValidAction(game, pos[0], pos[1], target[0], target[1], 'R'));
     }
 }

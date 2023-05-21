@@ -9,7 +9,6 @@ public class BartSimpsonUnit extends Recruiter {
 	private int numTimesSpawned;
 	private boolean distract;
 	private boolean recruit;
-
 	public BartSimpsonUnit(
 		char symbol, String name, double health, double healthModifier, double damage,
 		double damageModifier, int luck, int xCor, int yCor, int movement,
@@ -20,29 +19,18 @@ public class BartSimpsonUnit extends Recruiter {
 		this.distract = distract;
 		this.recruit = recruit;
 	}
+
 	public BartSimpsonUnit() {
 		this('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
 				5, 5, 1, 0, 0, true, true);
 	}
 
-	public int getNumTimesSpawned() {
-		return this.numTimesSpawned;
-	}
-	public void setNumTimesSpawned(int spawned) {
-		this.numTimesSpawned = spawned;
-	}
-	public boolean canDistract() {
-		return this.distract;
-	}
-	public void setDistract(boolean canDistract) {
-		this.distract = canDistract;
-	}
-	public boolean canRecruit() {
-		return this.recruit;
-	}
-	public void setRecruit(boolean canRecruit) {
-		this.recruit = canRecruit;
-	}
+	public int getNumTimesSpawned() { return this.numTimesSpawned; }
+	public void setNumTimesSpawned(int spawned) { this.numTimesSpawned = spawned; }
+	public boolean canDistract() { return this.distract; }
+	public void setDistract(boolean canDistract) { this.distract = canDistract; }
+	public boolean canRecruit() { return this.recruit; }
+	public void setRecruit(boolean canRecruit) { this.recruit = canRecruit; }
 
 	/**
 	 * Determines if a piece can make a copy of itself:

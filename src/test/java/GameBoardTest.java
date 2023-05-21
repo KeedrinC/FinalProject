@@ -1,17 +1,17 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class GameBoardTest {
-    public static String boardString(int numRows, int numColumns){
+    public static String boardString(int numRows, int numColumns) {
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
 
-        for(int col = 0; col < numColumns; col++){
+        for(int col = 0; col < numColumns; col++) {
             boardString.append(col + "        ");
         }
         boardString.append("\n");
-        for(int row = 0; row < numRows; row++){
+        for(int row = 0; row < numRows; row++) {
             boardString.append("Row : " + row + "   ");
-            for(int col = 0; col < numColumns; col++){
+            for(int col = 0; col < numColumns; col++) {
                 boardString.append("-------" + "  ");
             }
             boardString.append("\n");

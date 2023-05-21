@@ -31,9 +31,9 @@ public class Controller {
     }
 
     public Controller() {
-        game = setUpGameModel(); // Call setUpGameModel and assign its return value to the Game property
-        textView = new TextView(); // Create an instance of the TextView class and assign it to the textView property
-        textView.updateView(game); // Call updateView to display the game to our players
+        this.game = setUpGameModel(); // Call setUpGameModel and assign its return value to the Game property
+        this.textView = new TextView(); // Create an instance of the TextView class and assign it to the textView property
+        this.textView.updateView(game); // Call updateView to display the game to our players
     }
 
     public void carryOutAction(int fromRow, int fromCol, int toRow, int toCol, char actionType) {
