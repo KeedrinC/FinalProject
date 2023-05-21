@@ -65,4 +65,21 @@ public class BartSimpsonUnit extends Recruiter {
 		this.numTimesSpawned++;
 		return newBart;
 	}
+
+	@Override
+	public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
+		if (row != targetRow && column != targetColumn) return false;
+		if (column == targetColumn && Math.abs(targetRow - row) > 2) return false;
+		return true;
+	}
+
+	@Override
+	public boolean validSpawnPath(int row, int column, int targetRow, int targetColumn) {
+		return this.validMovePath(row, column, targetRow, targetColumn);
+	}
+
+	@Override
+	public boolean validRecruitPath(int row, int column, int targetRow, int targetColumn) {
+		return this.validMovePath(row, column, targetRow, targetColumn);
+	}
 }

@@ -12,7 +12,5 @@ public abstract class Attacker extends Unit {
     public void setNumAttacks(int numAttacks) {
         this.numAttacks = numAttacks;
     }
-    public boolean validAttackPath(int row, int column, int targetRow, int targetColumn) {
-        return true;
-    }
+    abstract boolean validAttackPath(int row, int column, int targetRow, int targetColumn);
 }

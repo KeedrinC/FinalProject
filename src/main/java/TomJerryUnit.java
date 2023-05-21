@@ -53,4 +53,21 @@ public class TomJerryUnit extends Attacker {
 	public void takeDamage(double damage) {
 		if (!this.isHiding()) this.setHealth(this.health - damage);
 	}
+
+	@Override
+	public boolean validAttackPath(int row, int column, int targetRow, int targetColumn) {
+		if (row != targetRow && column != targetColumn) return false;
+		if (row == targetRow && Math.abs(targetColumn - column) > 2) return false;
+		return true;
+	}
+
+	@Override
+	public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
+		return true;
+	}
+
+	@Override
+	public boolean validSpawnPath(int row, int column, int targetRow, int targetColumn) {
+		return this.validMovePath(row, column, targetRow, targetColumn);
+	}
 }

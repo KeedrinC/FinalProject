@@ -89,4 +89,19 @@ class TomJerryUnitTest {
         assertEquals(notHiding.getHealth(), 100);
         assertEquals(hiding.getHealth(), 100);
     }
+
+    @Test
+    void validAttackPath() {
+        TomJerryUnit tj = new TomJerryUnit();
+        assert(tj.validAttackPath(0, 0, 1, 0));
+        assert(tj.validAttackPath(0, 0, 10, 0));
+        assert(tj.validAttackPath(0, 0, 20, 0));
+        assertFalse(tj.validAttackPath(0, 0, 1, 1));
+        assert(tj.validAttackPath(0, 3, 0, 1));
+        assert(tj.validAttackPath(0, 3, 0, 2));
+        assert(tj.validAttackPath(0, 3, 0, 4));
+        assert(tj.validAttackPath(0, 3, 0, 5));
+        assertFalse(tj.validAttackPath(0, 3, 0, 0));
+        assertFalse(tj.validAttackPath(0, 3, 0, 6));
+    }
 }

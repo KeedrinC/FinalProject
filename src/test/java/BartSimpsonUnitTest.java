@@ -73,4 +73,25 @@ class BartSimpsonUnitTest {
         noTimes.setNumTimesSpawned(1);
         assertEquals(noTimes.getNumTimesSpawned(), 1);
     }
+
+    @Test
+    void validMovePath() {
+        BartSimpsonUnit bart = new BartSimpsonUnit();
+        // Bart can move any number of spaces up and down the column, but no spaces across the row
+        assert(bart.validMovePath(0, 0, 0, 1));
+        assert(bart.validMovePath(0, 0, 0, 2));
+        assert(bart.validMovePath(0, 0, 0, 3));
+        assert(bart.validMovePath(0, 0, 0, 4));
+        assert(bart.validMovePath(0, 0, 0, 100));
+        assertFalse(bart.validMovePath(0, 0, 1, 1));
+        assertFalse(bart.validMovePath(0, 0, 1, 2));
+        assertFalse(bart.validMovePath(0, 0, 1, 3));
+        assertFalse(bart.validMovePath(0, 0, 1, 4));
+        assert(bart.validMovePath(3, 0, 1, 0));
+        assert(bart.validMovePath(3, 0, 2, 0));
+        assert(bart.validMovePath(3, 0, 4, 0));
+        assert(bart.validMovePath(3, 0, 5, 0));
+        assertFalse(bart.validMovePath(3, 0, 0, 0));
+        assertFalse(bart.validMovePath(3, 0, 6, 0));
+    }
 }
