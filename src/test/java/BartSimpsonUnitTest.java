@@ -87,6 +87,7 @@ class BartSimpsonUnitTest {
         assertFalse(bart.validMovePath(0, 0, 1, 2));
         assertFalse(bart.validMovePath(0, 0, 1, 3));
         assertFalse(bart.validMovePath(0, 0, 1, 4));
+        // or two spaces across the row but no spaces down the column
         assert(bart.validMovePath(3, 0, 1, 0));
         assert(bart.validMovePath(3, 0, 2, 0));
         assert(bart.validMovePath(3, 0, 4, 0));
