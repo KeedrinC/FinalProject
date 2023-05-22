@@ -1,20 +1,25 @@
+// New Unit Modifications
+/**
+ * This class is for our Burger King game piece. The Burger King is a tank, and has lots of health.
+ * He deals less damage than Tom and Jerry but can stun opponents.
+ */
 public class BurgerKingUnit extends Attacker {
     private boolean whopper;
 
     public BurgerKingUnit(char symbol, String name, double health, double healthModifier,
-                          double damage, double damageModifier, int luck, int xCor, int yCor, int movement,
-                          int movementModifier, boolean whopper) {
+        double damage, double damageModifier, int luck, int xCor, int yCor, int movement,
+        int movementModifier, boolean whopper) {
         super(symbol, name, health, healthModifier, damage, damageModifier, luck,
                 xCor, yCor, movement, movementModifier);
         this.whopper = whopper;
     }
     public BurgerKingUnit() {
-        this('K', "Burger King", 100.0, 0.0, 25.0, 0.0, 0,
+        this('K', "Burger King", 300.0, 0.0, 15.0, 0.0, 0,
                 5, 5, 1, 0, true);
     }
     public boolean getWhopper() { return whopper; }
     public void setWhopper(boolean whopper) { this.whopper = whopper; }
-    public boolean canSpawn() { return true; }
+    public boolean canSpawn() { return false; }
 
     public BurgerKingUnit spawn() {
         BurgerKingUnit newBurgerKing = new BurgerKingUnit(
@@ -24,7 +29,6 @@ public class BurgerKingUnit extends Attacker {
     }
 
     public double dealDamage() {
-        //deals less damage than Tom and Jerry but can stun
         double totalDamage = this.damage + damageModifier;
         if (this.getWhopper())
             totalDamage += 5;
@@ -32,32 +36,25 @@ public class BurgerKingUnit extends Attacker {
     }
 
     public boolean validStunPath(int row, int column, int targetRow, int targetColumn) {
-        // can only stun units that are 3 spaces away in any direction from a Burger King
-        if (targetRow == row + 3 || targetColumn == column + 3
-           || targetRow == row - 3 || targetColumn == column - 3) {
-            return true;
-        }
-        return false;
+        // can stun units that are 1 space away in any direction
+        return this.validMovePath(row, column, targetRow, targetColumn);
     }
 
     @Override
 	public boolean validAttackPath(int row, int column, int targetRow, int targetColumn) {
-		if (targetRow >= 0 || targetRow <= 0 || targetColumn == 2 || targetColumn == 1) {
-			return true;
-		}
-		return false;
+        // can attack units that are 1 space away in any direction
+        return this.validMovePath(row, column, targetRow, targetColumn);
 	}
 
     @Override
 	public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
-		if (targetRow == 1 || targetRow == 2 || targetColumn >= 0 || targetColumn <= 0) { //Any spaces up and down the column, only two spaces on the row
-			return true;
-		}
-		return false;
+		// can only move one space away in any direction
+        return Math.abs(targetRow - row) <= 1 && Math.abs(targetColumn - column) <= 1;
 	}
 
     @Override
 	public boolean validSpawnPath(int row, int column, int targetRow, int targetColumn) {
-		return false;
+        // can only spawn one space away in any direction
+        return this.validMovePath(row, column, targetRow, targetColumn);
 	}
 }
