@@ -10,4 +10,13 @@ class ActionSpawn extends Action {
         target.setUnit(spawn); // ● put Unit that was just created Unit on the board in the ‘to square’
         super.game.changeTurn(); // ● change the turn
     }
+
+    @Override
+    public String toString() {
+        return "Spawn: " + super.game.getCurrentPlayer().getTeam().getTeamColor() + " team's "
+            + super.game.getBoardSquares()[super.row][super.column].getUnit().getName()
+            + " unit at " + super.row + ", " + super.column  + " spawns another "
+            + super.game.getBoardSquares()[super.row][super.column].getUnit().getName()
+            + " unit at " + super.targetRow + ", " + super.targetColumn;
+    }
 }

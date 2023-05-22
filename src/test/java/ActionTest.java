@@ -18,6 +18,7 @@ public class ActionTest {
     void actionMove() {
         int[] pos = {0, 0}, target = {1, 0}; // move down
         ActionMove m = new ActionMove(game, pos[0], pos[1], target[0], target[1]);
+        System.out.println(m.toString());
 
         assert(!game.getBoardSquares()[pos[0]][pos[1]].isEmpty());      // current position isn't empty
         assert(game.getBoardSquares()[target[0]][target[1]].isEmpty()); // target position is empty
@@ -29,6 +30,7 @@ public class ActionTest {
     void actionAttackBS() { // TomJerryUnit attacks BartSimpsonUnit
         int[] pos = {1, 1}, target = {0, 0}; // attack diagonally
         ActionAttack m = new ActionAttack(game, pos[0], pos[1], target[0], target[1]);
+        System.out.println(m.toString());
         Unit attacker = game.getBoardSquares()[pos[0]][pos[1]].getUnit();
         Unit victim = game.getBoardSquares()[target[0]][target[1]].getUnit();
 
@@ -64,6 +66,7 @@ public class ActionTest {
         BoardSquare posSquare = game.getBoardSquares()[pos[0]][pos[1]];
         BoardSquare targetSquare = game.getBoardSquares()[target[0]][target[1]];
         ActionRecruit m = new ActionRecruit(game, pos[0], pos[1], target[0], target[1]);
+        System.out.println(m.toString());
         assert(!posSquare.isEmpty());      // current position isn't empty
         assert(!targetSquare.isEmpty()); // target position isn't empty
         assert(posSquare.getUnit().getTeamColor() != targetSquare.getUnit().getTeamColor()); // not already teammates

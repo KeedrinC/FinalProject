@@ -21,4 +21,13 @@ class ActionAttack extends Action {
         }
         super.game.changeTurn(); // ● Change the turn
     }
+    @Override
+    public String toString() {
+        return "Attack: " + super.game.getCurrentPlayer().getTeam().getTeamColor() + " team's "
+            + super.game.getBoardSquares()[super.row][super.column].getUnit().getName()
+            + " unit at " + super.row + ", " + super.column  + " attacks "
+            + super.game.getOpponentPlayer().getTeam().getTeamColor() + " team's "
+            + super.game.getBoardSquares()[super.targetRow][super.targetColumn].getUnit().getName()
+            + " unit at " + super.targetRow + ", " + super.targetColumn;
+    }
 }

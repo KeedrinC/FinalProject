@@ -9,4 +9,10 @@ class ActionMove extends Action {
         square.removeUnit(); // ● remove Unit on ‘from square’
         super.game.changeTurn(); // ● change the turn
     }
+    @Override
+    public String toString() {
+        return "Move: " + game.getCurrentPlayer().getTeam().getTeamColor() + " team's "
+            + game.getBoardSquares()[super.row][super.column].getUnit().getName() + " unit moves from "
+            + super.row + ", " + super.column + " to " + super.targetRow + ", " + super.targetColumn;
+    }
 }

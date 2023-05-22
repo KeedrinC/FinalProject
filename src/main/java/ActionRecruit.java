@@ -8,4 +8,14 @@ class ActionRecruit extends Action {
         game.getCurrentPlayer().getTeam().addUnitsToTeam(target.getUnit()); // ● add the Unit that was recruited to the current team
         super.game.changeTurn(); // ● change the turn
     }
+
+    @Override
+    public String toString() {
+        return "Recruit: " + super.game.getCurrentPlayer().getTeam().getTeamColor() + " team's "
+            + super.game.getBoardSquares()[super.row][super.column].getUnit().getName()
+            + " unit at " + super.row + ", " + super.column  + " recruits "
+            + super.game.getOpponentPlayer().getTeam().getTeamColor() + " team's "
+            + super.game.getBoardSquares()[super.targetRow][super.targetColumn].getUnit().getName()
+            + " unit at " + super.targetRow + ", " + super.targetColumn;
+    }
 }
