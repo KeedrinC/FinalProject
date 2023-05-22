@@ -37,30 +37,30 @@ public class Controller {
     }
 
     public void carryOutAction(int fromRow, int fromCol, int toRow, int toCol, char actionType) {
-        if (!Rules.checkValidAction(game, fromRow, fromCol, toRow, toCol, actionType)) {
-            if (actionType == 'M') System.out.println("Invalid move.");
-            else if (actionType == 'A') System.out.println("Invalid attack.");
-            else if (actionType == 'R') System.out.println("Invalid recruit.");
-            else if (actionType == 'S') System.out.println("Invalid spawn.");
-        } else {
-            Action action = null;
-            if (actionType == 'M') action = new ActionMove(game, fromRow, fromCol, toRow, toCol);
-            else if (actionType == 'A') action = new ActionAttack(game, fromRow, fromCol, toRow, toCol);
-            else if (actionType == 'R') action = new ActionRecruit(game, fromRow, fromCol, toRow, toCol);
-            else if (actionType == 'S') action = new ActionSpawn(game, fromRow, fromCol, toRow, toCol);
-            else { System.out.println("Invalid action type."); }
-            if (action instanceof Action) action.perfomAction();
+        Action action = null;
+        if (actionType == 'M') action = new ActionMove(game, fromRow, fromCol, toRow, toCol);
+        else if (actionType == 'A') action = new ActionAttack(game, fromRow, fromCol, toRow, toCol);
+        else if (actionType == 'R') action = new ActionRecruit(game, fromRow, fromCol, toRow, toCol);
+        else if (actionType == 'S') action = new ActionSpawn(game, fromRow, fromCol, toRow, toCol);
+        else System.out.println("Invalid action type.");
+        if (action instanceof Action) {
+            action.perfomAction();
+            int playerNumber = this.game.getCurrentPlayer().getPlayerNumber();
+            this.gameEvents.push(new GameEventNode(new GameEvent(playerNumber, action.toString().split(":")[0], action.toString())));
         }
     }
 
     public void playGame() {
-        while (!game.isGameEnded()) {
-            textView.getNextPlayersAction(game);
-            // Check if the action is valid
-            while (!Rules.checkValidAction(game, textView.getRow(), textView.getColumn(),
+        while (!this.game.isGameEnded()) {
+            textView.getNextPlayersAction(this.game);
+            while (!Rules.checkValidAction(this.game, textView.getRow(), textView.getColumn(),
                 textView.getTargetRow(), textView.getTargetColumn(), textView.getActionType())) {
-                System.out.println("Invalid action. Please try again.");
-                textView.getNextPlayersAction(game);
+                char actionType = textView.getActionType();
+                if (actionType == 'M') System.out.println("Invalid move.");
+                else if (actionType == 'A') System.out.println("Invalid attack.");
+                else if (actionType == 'R') System.out.println("Invalid recruit.");
+                else if (actionType == 'S') System.out.println("Invalid spawn.");
+                textView.getNextPlayersAction(this.game);
             }
 
             carryOutAction(textView.getRow(), textView.getColumn(),
