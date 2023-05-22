@@ -1,11 +1,10 @@
 /**
  * This class is for our Bart Simpson game piece. Bart moves faster than other
- * pieces,
- * and has the ability to distract and recruit enemies as he passes them.
+ * pieces, and has the ability to distract and recruit enemies as he passes them.
  */
 
 public class BartSimpsonUnit extends Recruiter {
-	final int MAX_NUM_SPAWNED = 2;
+	private final int MAX_NUM_SPAWNED = 2;
 	private int numTimesSpawned;
 	private boolean distract;
 	private boolean recruit;
@@ -22,7 +21,7 @@ public class BartSimpsonUnit extends Recruiter {
 
 	public BartSimpsonUnit() {
 		this('B', "Bart Simpson", 100.0, 0.0, 25.0, 0.0, 0,
-				5, 5, 1, 0, 0, true, true);
+				5, 5, 2, 0, 0, true, true);
 	}
 
 	public int getNumTimesSpawned() { return this.numTimesSpawned; }
