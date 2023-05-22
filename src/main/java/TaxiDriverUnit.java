@@ -34,7 +34,10 @@ public class TaxiDriverUnit extends BartSimpsonUnit {
     @Override
     public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
         // can move 3 spaces away in any direction
-        return Math.abs(targetRow - row) <= 3 && Math.abs(targetColumn - column) <= 3;
+        int targetDistance = Math.abs(targetRow - row);
+        int columnDistance = Math.abs(targetColumn - column);
+        if (targetDistance > 3 || columnDistance > 3) return false;
+        return (targetDistance == columnDistance || !(targetDistance != 0 && columnDistance != 0));
     }
 
     @Override
