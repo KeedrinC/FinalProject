@@ -5,9 +5,9 @@ class TaxiDriverUnitTest {
 
     @Test
     void testSpawn() {
-        TaxiDriverUnit tempBart = new TaxiDriverUnit();
-        assertTrue(tempBart.spawn() instanceof TaxiDriverUnit);
-        assertTrue(tempBart.spawn() instanceof Unit);
+        TaxiDriverUnit tempTaxi = new TaxiDriverUnit();
+        assertTrue(tempTaxi.spawn() instanceof TaxiDriverUnit);
+        assertTrue(tempTaxi.spawn() instanceof Unit);
     }
 
     @Test
@@ -52,18 +52,18 @@ class TaxiDriverUnitTest {
 
     @Test
     void setDistract() {
-        TaxiDriverUnit tempBart = new TaxiDriverUnit();
-        assertTrue(tempBart.canDistract());
-        tempBart.setDistract(false);
-        assertFalse(tempBart.canDistract());
+        TaxiDriverUnit tempTaxi = new TaxiDriverUnit();
+        assertTrue(tempTaxi.canDistract());
+        tempTaxi.setDistract(false);
+        assertFalse(tempTaxi.canDistract());
     }
 
     @Test
     void setRecruit() {
-        TaxiDriverUnit tempBart = new TaxiDriverUnit();
-        assertTrue(tempBart.canRecruit());
-        tempBart.setRecruit(false);
-        assertFalse(tempBart.canRecruit());
+        TaxiDriverUnit tempTaxi = new TaxiDriverUnit();
+        assertTrue(tempTaxi.canRecruit());
+        tempTaxi.setRecruit(false);
+        assertFalse(tempTaxi.canRecruit());
     }
 
     @Test
@@ -76,22 +76,18 @@ class TaxiDriverUnitTest {
 
     @Test
     void validMovePath() {
-        TaxiDriverUnit bart = new TaxiDriverUnit();
-        // Bart can move any number of spaces up and down the column, but no spaces across the row
-        assert(bart.validMovePath(0, 0, 0, 1));
-        assert(bart.validMovePath(0, 0, 0, 2));
-        assert(bart.validMovePath(0, 0, 0, 3));
-        assert(bart.validMovePath(0, 0, 0, 4));
-        assert(bart.validMovePath(0, 0, 0, 100));
-        assertFalse(bart.validMovePath(0, 0, 1, 1));
-        assertFalse(bart.validMovePath(0, 0, 1, 2));
-        assertFalse(bart.validMovePath(0, 0, 1, 3));
-        assertFalse(bart.validMovePath(0, 0, 1, 4));
-        assert(bart.validMovePath(3, 0, 1, 0));
-        assert(bart.validMovePath(3, 0, 2, 0));
-        assert(bart.validMovePath(3, 0, 4, 0));
-        assert(bart.validMovePath(3, 0, 5, 0));
-        assertFalse(bart.validMovePath(3, 0, 0, 0));
-        assertFalse(bart.validMovePath(3, 0, 6, 0));
+        TaxiDriverUnit taxi = new TaxiDriverUnit();
+        // Taxi can move any number of spaces up and down the column, but no spaces across the row
+        assert(taxi.validMovePath(0, 0, 1, 0));
+        assert(taxi.validMovePath(0, 0, 2, 0));
+        assert(taxi.validMovePath(0, 0, 3, 0));
+        assert(taxi.validMovePath(0, 0, 0, 1));
+        assert(taxi.validMovePath(0, 0, 0, 2));
+        assert(taxi.validMovePath(0, 0, 0, 3));
+        assert(taxi.validMovePath(0, 0, 1, 1));
+        assert(taxi.validMovePath(0, 0, 2, 2));
+        assert(taxi.validMovePath(0, 0, 3, 3));
+        assertFalse(taxi.validMovePath(0, 0, 0, 4));
+        assertFalse(taxi.validMovePath(0, 0, 2, 1));
     }
 }
