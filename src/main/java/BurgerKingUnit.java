@@ -1,7 +1,7 @@
 // New Unit Modifications
 /**
  * This class is for our Burger King game piece. The Burger King is a tank, and has lots of health.
- * He deals less damage than Tom and Jerry but can stun opponents.
+ * He deals less damage than Tom and Jerry but can stun opponents or unstun teammates.
  */
 public class BurgerKingUnit extends Attacker {
     private boolean whopper;
@@ -19,7 +19,7 @@ public class BurgerKingUnit extends Attacker {
     }
     public boolean getWhopper() { return whopper; }
     public void setWhopper(boolean whopper) { this.whopper = whopper; }
-    public boolean canSpawn() { return false; }
+    public boolean canSpawn() { return false; } // there can only be one king
 
     public BurgerKingUnit spawn() {
         BurgerKingUnit newBurgerKing = new BurgerKingUnit(

@@ -9,7 +9,7 @@ public class Rules {
         if (currentUnit == null || currentUnit.getTeamColor() != game.getCurrentPlayer().getTeam().getTeamColor()) return false;
         if (!game.getBoard().inBounds(fromRow, fromColumn) || !game.getBoard().inBounds(toRow, toColumn)) return false;
         // New Rule Modification: stunned units cannot move
-        if (actionType == 'M' && currentUnit.getMovement() == 0) return false;
+        if (actionType == 'M' && currentUnit.getMovementModifier() < 0) return false;
         return (actionType == 'M' && target.isEmpty() && currentUnit.validMovePath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'S' && target.isEmpty() && currentUnit.validSpawnPath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'R' && currentUnit instanceof Recruiter && isOpponent
