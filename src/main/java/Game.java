@@ -66,13 +66,16 @@ public class Game {
     }
 
     public boolean isAWinner() {
-        return !(this.playerOne.getTeam().getTeamUnits().size() > 0
-            && this.playerTwo.getTeam().getTeamUnits().size() > 0);
+        return ((this.playerOne.getTeam().getTeamUnits().size() > 0
+            && this.playerTwo.getTeam().getTeamUnits().size() == 0)
+            || (this.playerTwo.getTeam().getTeamUnits().size() > 0
+                && this.playerOne.getTeam().getTeamUnits().size() == 0));
     }
     public Player getWinner() {
-        return (this.playerOne.getTeam().getTeamUnits().size()
-            > this.playerTwo.getTeam().getTeamUnits().size())
-            ? this.playerOne : this.playerTwo;
+        if (!this.isGameEnded()) return null;
+        int p1 = this.playerOne.getTeam().getTeamUnits().size();
+        int p2 = this.playerTwo.getTeam().getTeamUnits().size();
+        return (p1 > p2) ? this.playerOne : (p2 > p1) ? this.playerTwo : null;
     }
     public boolean isGameEnded() {
         return this.playerOne.getTeam().getTeamUnits().size() == 0
