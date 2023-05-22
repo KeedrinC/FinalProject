@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
 public class Controller {
     private Game game;
+    private GameEventsLinkedList gameEvents;
     private TextView textView;
     public Game setUpGameModel() {
         ArrayList<Unit> piecesTeamA = new ArrayList<Unit>();
@@ -34,6 +36,7 @@ public class Controller {
         this.game = setUpGameModel(); // Call setUpGameModel and assign its return value to the Game property
         this.textView = new TextView(); // Create an instance of the TextView class and assign it to the textView property
         this.textView.updateView(game); // Call updateView to display the game to our players
+        this.gameEvents = new GameEventsLinkedList();
     }
 
     public void carryOutAction(int fromRow, int fromCol, int toRow, int toCol, char actionType) {
@@ -63,12 +66,27 @@ public class Controller {
                 textView.getNextPlayersAction(this.game);
             }
 
-            carryOutAction(textView.getRow(), textView.getColumn(),
-                textView.getTargetRow(), textView.getTargetColumn(), textView.getActionType()); // Carry out the action
-            textView.updateView(game); // Print the game board
+            carryOutAction(textView.getRow(), textView.getColumn(), textView.getTargetRow(), textView.getTargetColumn(), textView.getActionType());
+            textView.updateView(this.game); // Print the game board
 
-            if (game.isGameEnded()) {
-                System.out.print("Winning Move: " + this.gameEvents.pop().getEventDetails());
+            if (this.game.isGameEnded()) {
+                ArrayList<GameEventsLinkedList> events = new ArrayList<>();
+                String[] eventStrings = {"Move", "Attack", "Spawn", "Recruit", "Stun"};
+                for (int i = 0; i < 4; i++) {
+                    GameEventsLinkedList addition = this.gameEvents;
+                    for (int z = 0; z < 4; z++)
+                        if (z != i) addition = addition.extract(eventStrings[z]);
+                    events.add(events.size(), addition);
+                }
+                Collections.sort(events, (a, b) -> a.size - b.size);
+                System.out.println("Total Moves: ");
+                for (GameEventsLinkedList e : events)
+                    if (e.size > 0) System.out.println(e.head.getGameState().getEventType() + ": " + e.size);
+                System.out.println();
+
+                GameEventNode lastMove = this.gameEvents.pop();
+                if (lastMove != null)
+                    System.out.println("Winning Move: " + lastMove.getGameState().getEventDetails());
                 this.textView.printEndOfGameMessage(this.game);
             }
         }
