@@ -73,4 +73,15 @@ public class ActionTest {
         m.perfomAction();
         assert(posSquare.getUnit().getTeamColor() == targetSquare.getUnit().getTeamColor()); // now teammates
     }
+    @Test
+    void actionSpawn() { // BartSimpsonUnit recruits TomJerryUnit
+        int[] pos = {0, 0}, target = {1, 0};
+        BoardSquare posSquare = game.getBoardSquares()[pos[0]][pos[1]];
+        BoardSquare targetSquare = game.getBoardSquares()[target[0]][target[1]];
+        ActionSpawn m = new ActionSpawn(game, pos[0], pos[1], target[0], target[1]);
+        System.out.println(m.toString());
+        assert(!posSquare.isEmpty());      // current position isn't empty
+        assert(targetSquare.isEmpty()); // target position is empty
+        m.perfomAction();
+    }
 }
