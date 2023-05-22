@@ -7,11 +7,16 @@ public class Rules {
         Unit targetUnit = target.getUnit();
         Boolean isOpponent = targetUnit != null && targetUnit.getTeamColor() != currentUnit.getTeamColor();
         if (currentUnit == null || currentUnit.getTeamColor() != game.getCurrentPlayer().getTeam().getTeamColor()) return false;
+        if (!game.getBoard().inBounds(fromRow, fromColumn) || !game.getBoard().inBounds(toRow, toColumn)) return false;
+        // New Rule Modification: stunned units cannot move
+        if (actionType == 'M' && currentUnit.getMovement() == 0) return false;
         return (actionType == 'M' && target.isEmpty() && currentUnit.validMovePath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'S' && target.isEmpty() && currentUnit.validSpawnPath(fromRow, fromColumn, toRow, toColumn))
             || (actionType == 'R' && currentUnit instanceof Recruiter && isOpponent
                 && ((Recruiter) currentUnit).validRecruitPath(toRow, fromColumn, toRow, toColumn))
             || (actionType == 'A' && currentUnit instanceof Attacker && isOpponent
-                && ((Attacker) currentUnit).validAttackPath(toRow, fromColumn, toRow, toColumn));
+                && ((Attacker) currentUnit).validAttackPath(toRow, fromColumn, toRow, toColumn))
+            || (actionType == 'W' && currentUnit instanceof BurgerKingUnit && isOpponent
+                && ((BurgerKingUnit) currentUnit).validStunPath(toRow, fromColumn, toRow, toColumn));
     }
 }
