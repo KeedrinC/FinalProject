@@ -56,18 +56,17 @@ public class TomJerryUnit extends Attacker {
 
 	@Override
 	public boolean validAttackPath(int row, int column, int targetRow, int targetColumn) {
-		if (row != targetRow && column != targetColumn) return false;
-		if (row == targetRow && Math.abs(targetColumn - column) > 2) return false;
-		return true;
+		return !(row != targetRow && column != targetColumn)
+			&& !(row == targetRow && Math.abs(targetColumn - column) > 2);
 	}
 
 	@Override
 	public boolean validMovePath(int row, int column, int targetRow, int targetColumn) {
-		return true;
+		return true; // anywhere on the board
 	}
 
 	@Override
 	public boolean validSpawnPath(int row, int column, int targetRow, int targetColumn) {
-		return this.validMovePath(row, column, targetRow, targetColumn);
+		return this.validMovePath(row, column, targetRow, targetColumn); // same path as move
 	}
 }
